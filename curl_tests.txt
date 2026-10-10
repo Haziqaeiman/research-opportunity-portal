@@ -1,0 +1,60 @@
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.15.0
+Date: Sat, 10 Oct 2026 18:21:15 GMT
+Content-Type: application/json
+Content-Length: 389
+Connection: close
+
+[
+  {
+    "deadline": "2026-12-15",
+    "department": "Computer Science",
+    "description": "Build image models that detect crop diseases.",
+    "faculty_name": "Dr. Ayesha Khan",
+    "id": 1,
+    "positions": 5,
+    "required_skills": "Python, TensorFlow",
+    "research_area": "Machine Learning",
+    "status": "Closed",
+    "title": "Machine Learning for Crop Disease Detection"
+  }
+]
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.9 Python/3.15.0
+Date: Sat, 10 Oct 2026 18:21:27 GMT
+Content-Type: application/json
+Content-Length: 361
+Connection: close
+
+{
+  "deadline": "2026-12-15",
+  "department": "Computer Science",
+  "description": "Build image models that detect crop diseases.",
+  "faculty_name": "Dr. Ayesha Khan",
+  "id": 1,
+  "positions": 5,
+  "required_skills": "Python, TensorFlow",
+  "research_area": "Machine Learning",
+  "status": "Closed",
+  "title": "Machine Learning for Crop Disease Detection"
+}
+HTTP/1.1 404 NOT FOUND
+Server: Werkzeug/3.1.9 Python/3.15.0
+Date: Sat, 10 Oct 2026 18:21:44 GMT
+Content-Type: application/json
+Content-Length: 52
+Connection: close
+
+{
+  "error": "Opportunity with id 999 not found."
+}
+HTTP/1.1 400 BAD REQUEST
+Server: Werkzeug/3.1.9 Python/3.15.0
+Date: Sat, 10 Oct 2026 18:21:56 GMT
+Content-Type: application/json
+Content-Length: 44
+Connection: close
+
+{
+  "error": "Field 'title' is required."
+}
