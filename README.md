@@ -3,7 +3,8 @@
 Course: Computer Networks (CN) - Assignment #01 - BS (CS 5B), FAST-NUCES Peshawar Campus
 Name: **Haziqa Eiman**| Reg. No: **P24-0594** | Class: BS**CS-5B**
 
-**GitHub Repository:** https://github.com/YOUR\_GITHUB\_USERNAME/research-opportunity-portal
+**GitHub Repository:** https://github.com/Haziqaeiman/research-opportunity-portal
+
 **Demo video:** (add your video file name or link here)
 
 A small web application where faculty members can post, view, update, close and delete research opportunities.
