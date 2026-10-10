@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Opportunity Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>University Research Opportunity Portal</h1>
+    <p>FAST-NUCES Peshawar Campus</p>
+  </header>
+
+  <main>
+    <!-- Success / error messages appear here -->
+    <div id="message" class="message hidden"></div>
+
+    <div class="layout">
+      <!-- LEFT: list of all opportunities -->
+      <section class="panel">
+        <h2>All Opportunities</h2>
+        <div id="list"></div>
+      </section>
+
+      <!-- RIGHT: details + form -->
+      <div>
+        <section class="panel" id="detailsPanel">
+          <h2>Details</h2>
+          <div id="details"><p class="muted">Click "View" on an opportunity to see its full details.</p></div>
+        </section>
+
+        <section class="panel">
+          <h2 id="formTitle">Create New Opportunity</h2>
+          <form id="oppForm" novalidate>
+            <input type="hidden" id="oppId">
+
+            <label for="title">Research Title *</label>
+            <input type="text" id="title" maxlength="200">
+
+            <label for="description">Research Description *</label>
+            <textarea id="description" rows="3"></textarea>
+
+            <label for="research_area">Research Area *</label>
+            <input type="text" id="research_area" maxlength="100">
+
+            <label for="faculty_name">Faculty Member's Name *</label>
+            <input type="text" id="faculty_name" maxlength="100">
+
+            <label for="department">Department *</label>
+            <input type="text" id="department" maxlength="100">
+
+            <label for="required_skills">Required Skills *</label>
+            <input type="text" id="required_skills" maxlength="300" placeholder="e.g. Python, Statistics">
+
+            <label for="positions">Number of Available Positions *</label>
+            <input type="number" id="positions" min="1" step="1">
+
+            <label for="deadline">Application Deadline *</label>
+            <input type="date" id="deadline">
+
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="Open">Open</option>
+              <option value="Closed">Closed</option>
+            </select>
+
+            <div class="buttons">
+              <button type="submit" id="submitBtn" class="btn primary">Create Opportunity</button>
+              <button type="button" id="cancelBtn" class="btn hidden">Cancel Edit</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
