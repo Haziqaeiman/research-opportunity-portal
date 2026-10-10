@@ -1,0 +1,462 @@
+{
+  "info": {
+    "name": "Research Opportunity Portal API",
+    "description": "Run the requests 1 to 11 in order (or use Runner). Requests 1-3 save the new IDs into collection variables id1, id2, id3.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create opportunity #1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Machine Learning for Crop Disease Detection\",\n  \"description\": \"Build image models that detect crop diseases from leaf photos.\",\n  \"research_area\": \"Machine Learning\",\n  \"faculty_name\": \"Dr. Ayesha Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, TensorFlow\",\n  \"positions\": 3,\n  \"deadline\": \"2026-12-15\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "Creates a row in MySQL. The new ID is saved automatically as {{id1}}."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 201 Created', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.test('Response has an id', function () { pm.expect(json.id).to.be.a('number'); });",
+              "pm.test('Status is Open', function () { pm.expect(json.status).to.eql('Open'); });",
+              "pm.collectionVariables.set('id1', json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Create opportunity #2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Secure Routing in Wireless Sensor Networks\",\n  \"description\": \"Study attacks on routing protocols and design a defence.\",\n  \"research_area\": \"Computer Networks\",\n  \"faculty_name\": \"Dr. Imran Ali\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"C++, Networking basics\",\n  \"positions\": 2,\n  \"deadline\": \"2026-11-30\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "New ID saved as {{id2}}."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 201 Created', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.test('Response has an id', function () { pm.expect(json.id).to.be.a('number'); });",
+              "pm.test('Status is Open', function () { pm.expect(json.status).to.eql('Open'); });",
+              "pm.collectionVariables.set('id2', json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Create opportunity #3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Energy Efficient IoT Monitoring\",\n  \"description\": \"Design low-power IoT nodes for lab monitoring.\",\n  \"research_area\": \"Internet of Things\",\n  \"faculty_name\": \"Dr. Sara Noor\",\n  \"department\": \"Electrical Engineering\",\n  \"required_skills\": \"Arduino, Embedded C\",\n  \"positions\": 1,\n  \"deadline\": \"2027-01-20\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "description": "New ID saved as {{id3}}."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 201 Created', function () { pm.response.to.have.status(201); });",
+              "var json = pm.response.json();",
+              "pm.test('Response has an id', function () { pm.expect(json.id).to.be.a('number'); });",
+              "pm.test('Status is Open', function () { pm.expect(json.status).to.eql('Open'); });",
+              "pm.collectionVariables.set('id3', json.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Get all opportunities",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200 OK', function () { pm.response.to.have.status(200); });",
+              "pm.test('Returns an array with at least 3 items', function () { pm.expect(pm.response.json().length).to.be.at.least(3); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Get one opportunity by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{id1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{id1}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200 OK', function () { pm.response.to.have.status(200); });",
+              "pm.test('Correct ID returned', function () { pm.expect(pm.response.json().id).to.eql(parseInt(pm.collectionVariables.get('id1'))); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Update opportunity #1 (title, skills, positions, deadline)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{id1}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{id1}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Machine Learning for Crop Disease Detection (Updated)\",\n  \"required_skills\": \"Python, TensorFlow, OpenCV\",\n  \"positions\": 5,\n  \"deadline\": \"2026-12-31\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200 OK', function () { pm.response.to.have.status(200); });",
+              "var json = pm.response.json();",
+              "pm.test('Positions updated to 5', function () { pm.expect(json.positions).to.eql(5); });",
+              "pm.test('Deadline updated', function () { pm.expect(json.deadline).to.eql('2026-12-31'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Close opportunity #2 (Open -> Closed)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{id2}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{id2}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200 OK', function () { pm.response.to.have.status(200); });",
+              "pm.test('Status is now Closed', function () { pm.expect(pm.response.json().status).to.eql('Closed'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Delete opportunity #3",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{id3}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{id3}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200 OK', function () { pm.response.to.have.status(200); });",
+              "pm.test('Success message returned', function () { pm.expect(pm.response.json().message).to.include('deleted'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "9. Get deleted opportunity #3 again (expect 404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities/{{id3}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities",
+            "{{id3}}"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 404 Not Found', function () { pm.response.to.have.status(404); });",
+              "pm.test('Error message returned', function () { pm.expect(pm.response.json().error).to.be.a('string'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Invalid data - missing fields (expect 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Only a title\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 400 Bad Request', function () { pm.response.to.have.status(400); });",
+              "pm.test('Validation error message returned', function () { pm.expect(pm.response.json().error).to.be.a('string'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11. Invalid data - positions is 0 (expect 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/opportunities",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Bad Positions Test\",\n  \"description\": \"Testing validation.\",\n  \"research_area\": \"Testing\",\n  \"faculty_name\": \"Dr. Test\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"None\",\n  \"positions\": 0,\n  \"deadline\": \"2026-12-31\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 400 Bad Request', function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "id1",
+      "value": ""
+    },
+    {
+      "key": "id2",
+      "value": ""
+    },
+    {
+      "key": "id3",
+      "value": ""
+    }
+  ]
+}
