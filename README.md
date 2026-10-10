@@ -5,7 +5,7 @@ Name: **Haziqa Eiman**| Reg. No: **P24-0594** | Class: BS**CS-5B**
 
 **GitHub Repository:** https://github.com/Haziqaeiman/research-opportunity-portal
 
-**Demo video:** (add your video file name or link here)
+**Demo video:** demo.mp4 (included in this repository)
 
 A small web application where faculty members can post, view, update, close and delete research opportunities.
 
